@@ -25,6 +25,9 @@
                 <th style="text-align:left">Nationality</th>
                 <th style="text-align:left">Birth Date</th>
                 <th style="text-align:left">Played Club</th>
+                <th> Scored goals</th>
+                <th> Number of games played </th>
+                <th> Number of initial games </th>
             </tr>
             <xsl:apply-templates select="lea:player"/>
         </table>
@@ -38,7 +41,37 @@
             <td><xsl:value-of select="lea:nationality"/></td>
             <td><xsl:value-of select="lea:birthDate"/></td>
             <td><xsl:value-of select="lea:playedClubs/lea:playedClub/@clubref"/></td>
+            <td>
+                <xsl:call-template name="scoredGoals">
+                    <xsl:with-param name="playerid" select="@id"/>
+                </xsl:call-template>
+            </td>
+            <td>
+                <xsl:call-template name="numberOfGamesPlayed">
+                    <xsl:with-param name="playerid" select="@id"/>
+                </xsl:call-template>
+            </td>
+            <td>
+                <xsl:call-template name="numberOfInitialGamesPlayed">
+                    <xsl:with-param name="playerid" select="@id"/>
+                </xsl:call-template>
+            </td>
         </tr>                
     </xsl:template>
+    
+    <xsl:template name="scoredGoals">
+        <xsl:param name="playerid"/>
+        <xsl:value-of select="count(//lea:scoringPlayer[@playerId=$playerid])"/>
+    </xsl:template>
    
+    <xsl:template name="numberOfGamesPlayed">
+        <xsl:param name="playerid"/>
+        <xsl:value-of select="count(//lea:game[ ./lea:initialPlayers/lea:initialPlayer[@playerId=$playerid] or ./lea:substitutions/lea:substitution[@playerid=$playerid]])"/>
+    </xsl:template>
+   
+    <xsl:template name="numberOfInitialGamesPlayed">
+<!--        sth calculated wrong-->
+        <xsl:param name="playerid"/>
+        <xsl:value-of select="count(//lea:initialPlayer[@playerId=$playerid])"/>
+    </xsl:template>
 </xsl:stylesheet>
