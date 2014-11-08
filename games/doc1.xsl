@@ -7,7 +7,9 @@
     
     <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
     
-    <xsl:param name="weekId" select="'wk7'"/>
+    <xsl:template name="params">
+        <xsl:param name="weekId"/>
+    </xsl:template>
     
     <xsl:template match="/">
         <html>
@@ -35,32 +37,36 @@
     </xsl:template>
     
     <xsl:template name="rows">
-        <xsl:for-each select="//lea:game[@week = $weekId]">
-            <tr>
-                <td><xsl:value-of select="$weekId"/></td>
-                <td><xsl:value-of select="@firstTeam"/></td>
-                <td><xsl:value-of select="@secondTeam"/></td>
-                <td><xsl:value-of select="lea:location"/></td>
-                <td>
-                    <xsl:for-each select="lea:result/lea:goal">
-                        <xsl:value-of select="current()/lea:goal"/>
-                    </xsl:for-each>
-                </td>
-                <td>
-                    <xsl:for-each select="lea:initialPlayers/lea:initialPlayer">
-                        <xsl:value-of select="current()/lea:initialPlayer"/>
-                    </xsl:for-each>
-                </td>
-                <td>
-                    
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>    
+        <xsl:for-each select="//lea:game">
+            <xsl:if test="current()[@week = $weekId]">
+                <tr>
+                    <td><xsl:value-of select="$weekId"/></td>
+                    <td><xsl:value-of select="@firstTeam"/></td>
+                    <td><xsl:value-of select="@secondTeam"/></td>
+                    <td><xsl:value-of select="lea:location"/></td>
+                    <td><xsl:value-of select="lea:spectatorsNumber"/></td>
+                    <td>
+                        <xsl:for-each select="lea:result/lea:goal">
+                            <xsl:value-of select="current()/lea:goal"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="lea:initialPlayers/lea:initialPlayer">
+                            <xsl:value-of select="current()/lea:initialPlayer"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="lea:substitutions/lea:substitution">
+                            <xsl:value-of select="current()/lea:substitution"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="lea:scoringPlayers/lea:scoringPlayer">
+                            <xsl:value-of select="current()/lea:scoringPlayer"/>
+                        </xsl:for-each>
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:for-each>
-         
-        
-     
     </xsl:template>
 </xsl:stylesheet>
