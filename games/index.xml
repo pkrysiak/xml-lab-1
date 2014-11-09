@@ -668,7 +668,7 @@
             <spectatorsNumber>5217</spectatorsNumber>
             <result>
                 <goals clubId="Penafiel">1</goals>
-                <goals clubId="Estoril">0</goals>
+                <goals clubId="Sporting">0</goals>
             </result>
             <initialPlayers>
                 <initialPlayer playerId="A.Haghighi" plClubId="Penafiel"/>
@@ -704,9 +704,6 @@
             </substitutions>
             <scoringPlayers>
                 <scoringPlayer playerId="Slimani" clubId ="Sporting"/>
-                <scoringPlayer playerId="Slimani" clubId ="Sporting"/>
-                <scoringPlayer playerId="P.Oliveira" clubId ="Sporting"/>
-                <scoringPlayer playerId="Nani" clubId ="Sporting"/>
             </scoringPlayers>
         </game>
     </games>
