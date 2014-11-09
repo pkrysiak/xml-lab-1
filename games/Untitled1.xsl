@@ -12,11 +12,10 @@
     <xsl:param name="query"/>
     
     <xsl:template match="/">
-        <xsl:variable name="allLines" select="count(*/lea:soccerLeague/lea:games/lea:game)"/>
+        <xsl:variable name="allLines" select="count(lea:soccerLeague/lea:games/lea:game)"/>
         
         <xsl:choose>
             <xsl:when test="$type = 'html'">
-                
                 <html>
                     <head>
                         <title></title>
@@ -45,13 +44,13 @@
     </xsl:template>
     
     
-    <xsl:template match="soccerLeague">
+    <xsl:template match="lea:games">
         <xsl:variable name="tabRef" select="generate-id(.)"/>
         <div id="myTab">
             <table id="{$tabRef}">
                 <thead>
                     <th><a href="javascript:sortColumn(0)"><xsl:attribute name="title">limpa ordenação</xsl:attribute>Idx</a></th>
-                    <xsl:for-each select="lea:soccerLeague/lea:games">
+                    <xsl:for-each select="./lea:game">
                         <th>
                             <a href="javascript:sortColumn({position()})">
                                 <xsl:attribute name="title">ordena por coluna <xsl:value-of select="position()"/></xsl:attribute>
@@ -60,11 +59,11 @@
                         </th>
                     </xsl:for-each>
                 </thead>
-                <xsl:for-each select="lea:game[contains(descendant-or-self::*,$query)]">
+                <xsl:for-each select="./lea:game[contains(descendant-or-self::*/@week,$query)]">
                     <xsl:sort select="./lea:game[position() = $columnSorts]" order="ascending"/>
                     <tr>
                         <td><xsl:value-of select="count(preceding-sibling::*)"/></td> 
-                        <xsl:for-each select="lea:game">
+                        <xsl:for-each select="./lea:game">
                             <td>
                                 <xsl:value-of select="."/>
                             </td>
