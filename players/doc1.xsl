@@ -15,6 +15,8 @@
         </html>
     </xsl:template>
     
+    <xsl:template match="lea:clubs | lea:games"/>
+    
     <xsl:template match="lea:players">
         <h2>Players Info</h2>
         <table border="1">
