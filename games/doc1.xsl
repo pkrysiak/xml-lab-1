@@ -38,9 +38,8 @@
     
     <xsl:template name="rows">
         <xsl:for-each select="//lea:game">
-            <xsl:if test="current()[@week = $weekId]">
                 <tr>
-                    <td><xsl:value-of select="$weekId"/></td>
+                    <td><xsl:value-of select="@week"/></td>
                     <td><xsl:value-of select="@firstTeam"/></td>
                     <td><xsl:value-of select="@secondTeam"/></td>
                     <td><xsl:value-of select="lea:location"/></td>
@@ -66,7 +65,7 @@
                         </xsl:for-each>
                     </td>
                 </tr>
-            </xsl:if>
+            
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>
