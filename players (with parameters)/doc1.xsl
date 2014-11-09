@@ -5,7 +5,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:lea="http://ssdi.di.fct.unl.pt/ctxml/soccerLeague">
     
-    <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+    
     
     <xsl:template match="/">
         <html>
@@ -14,6 +14,8 @@
             </body>
         </html>
     </xsl:template>
+    
+    <xsl:template match="lea:clubs | lea:games"/>
     
     <xsl:template match="lea:players">
         <h2>Players Info</h2>
