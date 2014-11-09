@@ -7,6 +7,8 @@
     
     <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
     
+    <xsl:param name="weekId" select="'wk7'"/>
+    
     <xsl:template match="/">
         <html>
             <body>
@@ -22,15 +24,18 @@
         <table border="1">
             <tr bgcolor="#9acd32">
                 <th style="text-align:left">Week</th>
-                <th style="text-align:left">First Team</th>
-                <th style="text-align:left">Second Team</th>
+                <th style="text-align:left">1st Team</th>
+                <th style="text-align:left">2nd Team</th>
                 <th style="text-align:left">Location</th>
-                <th style="text-align:left">Number of Spectators</th>
-                <th style="text-align:left">First Team Goals</th>
-                <th style="text-align:left">Second Team Goals</th>
-                <th style="text-align:left">Initial Players</th>
-                <th style="text-align:left">Substitutions</th>
-                <th style="text-align:left">Scoring Players</th>
+                <th style="text-align:left">No. of Spectators</th>
+                <th style="text-align:left">1st Team Goals</th>
+                <th style="text-align:left">2nd Team Goals</th>
+                <th style="text-align:left">Initial Players 1st Team</th>
+                <th style="text-align:left">Initial Players 2nd Team</th>
+                <th style="text-align:left">Substitutions 1st Team</th>
+                <th style="text-align:left">Substitutions 2nd Team</th>
+                <th style="text-align:left">Scoring Players 1st Team</th>
+                <th style="text-align:left">Scoring Players 2nd Team</th>
             </tr>
             <xsl:apply-templates select="lea:game"/>
         </table>
@@ -53,18 +58,33 @@
                     <td><xsl:value-of select="./lea:result/lea:goals[@clubId=$clubOne]"/></td>
                     <td><xsl:value-of select="./lea:result/lea:goals[@clubId=$clubTwo]"/></td>
                     <td>
-                        <xsl:for-each select="./lea:initialPlayers/lea:initialPlayer">
-                            <xsl:value-of select="."/>
+                        <xsl:for-each select="./lea:initialPlayers/lea:initialPlayer[@plClubId=$clubOne]">
+                            <xsl:value-of select="./@playerId"/>
                         </xsl:for-each>
                     </td>
                     <td>
-                        <xsl:for-each select="./lea:substitutions/lea:substitution">
-                            <xsl:value-of select="."/>
+                        <xsl:for-each select="./lea:initialPlayers/lea:initialPlayer[@plClubId=$clubTwo]">
+                            <xsl:value-of select="./@playerId"/>
                         </xsl:for-each>
                     </td>
                     <td>
-                        <xsl:for-each select="./lea:scoringPlayers/lea:scoringPlayer">
-                            <xsl:value-of select="."/>
+                        <xsl:for-each select="./lea:substitutions/lea:substitution[@plClubId=$clubOne]">
+                            <xsl:value-of select="./@playerId"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="./lea:substitutions/lea:substitution[@plClubId=$clubTwo]">
+                            <xsl:value-of select="./@playerId"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="./lea:scoringPlayers/lea:scoringPlayer[@clubId=$clubOne]">
+                            <xsl:value-of select="./@playerId"/>
+                        </xsl:for-each>
+                    </td>
+                    <td>
+                        <xsl:for-each select="./lea:scoringPlayers/lea:scoringPlayer[@clubId=$clubTwo]">
+                            <xsl:value-of select="./@playerId"/>
                         </xsl:for-each>
                     </td>
                 </tr>
