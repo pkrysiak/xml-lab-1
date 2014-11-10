@@ -616,7 +616,7 @@
     <!--    GAMES !-->
     <!--    GAMES !-->
     <games>
-        <game id="g32521" firstTeam="Estoril" secondTeam="Benfica" week="wk8">
+        <game id="g32521" firstTeam="Estoril" secondTeam="Benfica" week="wk7">
             <location>Estadio Antonio Coimbra da Moita</location>
             <spectatorsNumber>7587</spectatorsNumber>
             <result>
@@ -664,6 +664,49 @@
             </scoringPlayers>
         </game>
         <game id="g32525" firstTeam="Penafiel" secondTeam="Sporting" week="wk7">
+            <location>Estadio do Penafiel</location>
+            <spectatorsNumber>5217</spectatorsNumber>
+            <result>
+                <goals clubId="Penafiel">1</goals>
+                <goals clubId="Sporting">0</goals>
+            </result>
+            <initialPlayers>
+                <initialPlayer playerId="A.Haghighi" plClubId="Penafiel"/>
+                <initialPlayer playerId="P.Ribeiro" plClubId="Penafiel"/>
+                <initialPlayer playerId="Ferreira" plClubId="Penafiel"/>
+                <initialPlayer playerId="Guedes" plClubId="Penafiel"/>
+                <initialPlayer playerId="Aldair" plClubId="Penafiel"/>
+                <initialPlayer playerId="Dani" plClubId="Penafiel"/>
+                <initialPlayer playerId="N.Lenho" plClubId="Penafiel"/>
+                <initialPlayer playerId="A.Fontes" plClubId="Penafiel"/>
+                <initialPlayer playerId="R.Sousa" plClubId="Penafiel"/>
+                <initialPlayer playerId="Bura" plClubId="Penafiel"/>
+                <initialPlayer playerId="D.Mbala" plClubId="Penafiel"/>
+                <initialPlayer playerId="R.Patricio" plClubId="Sporting"/>
+                <initialPlayer playerId="Jefferson" plClubId="Sporting"/>
+                <initialPlayer playerId="A.Martins" plClubId="Sporting"/>
+                <initialPlayer playerId="Slimani" plClubId="Sporting"/>
+                <initialPlayer playerId="William" plClubId="Sporting"/>
+                <initialPlayer playerId="J.Mario" plClubId="Sporting"/>
+                <initialPlayer playerId="CarriloD." plClubId="Sporting"/>
+                <initialPlayer playerId="P.Oliveira" plClubId="Sporting"/>
+                <initialPlayer playerId="N.Sarr" plClubId="Sporting"/>
+                <initialPlayer playerId="Cedric" plClubId="Sporting"/>
+                <initialPlayer playerId="Nani" plClubId="Sporting"/>
+            </initialPlayers>
+            <substitutions>
+                <substitution playerId="A.Haghighi" substitutedPlayerId="Guedes" clubId="Penafiel"/>
+                <substitution playerId="Guedes" substitutedPlayerId="D.Mbala" clubId="Penafiel"/>
+                <substitution playerId="Dani" substitutedPlayerId="A.Fontes" clubId="Penafiel"/>
+                <substitution playerId="William" substitutedPlayerId="A.Martins" clubId="Sporting"/>
+                <substitution playerId="N.Sarr" substitutedPlayerId="William" clubId="Sporting"/>
+                <substitution playerId="Nani" substitutedPlayerId="CarriloD." clubId="Sporting"/>
+            </substitutions>
+            <scoringPlayers>
+                <scoringPlayer playerId="Slimani" clubId ="Sporting"/>
+            </scoringPlayers>
+        </game>
+        <game id="g32565" firstTeam="Penafiel" secondTeam="Sporting" week="wk8">
             <location>Estadio do Penafiel</location>
             <spectatorsNumber>5217</spectatorsNumber>
             <result>

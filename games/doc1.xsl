@@ -16,6 +16,10 @@
             </head>
             <body>
                 <div class="container">
+                    <div class="page-header">
+                        <h1>Games info</h1>
+                        <small>Week:  <xsl:value-of select="$weekId"/></small>
+                    </div>
                     <xsl:apply-templates/>
                 </div>
             </body>
@@ -25,10 +29,6 @@
     <xsl:template match="lea:players | lea:clubs"/>
     
     <xsl:template match="lea:game">
-        <div class="page-header">
-            <h1>Games info</h1>
-            <small>Week:  <xsl:value-of select="$weekId"/></small>
-        </div>
         <xsl:if test="current()/@week = $weekId">
             <xsl:variable name="teamOne">
                 <xsl:value-of select="@firstTeam"/>
@@ -89,6 +89,7 @@
             </div>
             <xsl:call-template name="initPlayers">
                 <xsl:with-param name="weekId" select="@week"/>
+                <xsl:with-param name="gameId" select="@id"/>
             </xsl:call-template>
             
             <div class="page-header">
@@ -96,6 +97,7 @@
             </div>
             <xsl:call-template name="subs">
                 <xsl:with-param name="weekId" select="@week"/>
+                <xsl:with-param name="gameId" select="@id"/>
             </xsl:call-template>
             
             <div class="page-header">
@@ -103,18 +105,20 @@
             </div>
             <xsl:call-template name="scorePlayers">
                 <xsl:with-param name="weekId" select="@week"/>
+                <xsl:with-param name="gameId" select="@id"/>
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
      
     <xsl:template name='initPlayers'>
-        <xsl:param name="weekId"/>        
+        <xsl:param name="weekId"/>  
+        <xsl:param name="gameId"/>
         <table class="table table-striped table-bordered table-hover">
             <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Team</th>
             </tr>
-                <xsl:for-each select="//lea:game[@week=$weekId]/lea:initialPlayers/lea:initialPlayer">
+                <xsl:for-each select="//lea:game[@id=$gameId and @week=$weekId]/lea:initialPlayers/lea:initialPlayer">
                     <tr>
                         <td><xsl:value-of select="./@playerId"/></td>
                         <td><xsl:value-of select="./@plClubId"/></td>
@@ -124,14 +128,15 @@
     </xsl:template>
     
     <xsl:template name='subs'>
-        <xsl:param name="weekId"/>        
+        <xsl:param name="weekId"/> 
+        <xsl:param name="gameId"/>
         <table class="table table-striped table-bordered table-hover">
             <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Substituted Player</th>
                 <th style="text-align:left">Team</th>
             </tr>
-            <xsl:for-each select="//lea:game[@week=$weekId]/lea:substitutions/lea:substitution">
+            <xsl:for-each select="//lea:game[@id=$gameId and @week=$weekId]/lea:substitutions/lea:substitution">
                 <tr>
                     <td><xsl:value-of select="./@playerId"/></td>
                     <td><xsl:value-of select="./@substitutedPlayerId"/></td>
@@ -142,13 +147,14 @@
     </xsl:template>
     
     <xsl:template name='scorePlayers'>
-        <xsl:param name="weekId"/>        
+        <xsl:param name="weekId"/>       
+        <xsl:param name="gameId"/>
         <table class="table table-striped table-bordered table-hover">
             <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Team</th>
             </tr>
-            <xsl:for-each select="//lea:game[@week=$weekId]/lea:scoringPlayers/lea:scoringPlayer">
+            <xsl:for-each select="//lea:game[@id=$gameId and @week=$weekId]/lea:scoringPlayers/lea:scoringPlayer">
                 <tr>
                     <td><xsl:value-of select="./@playerId"/></td>
                     <td><xsl:value-of select="./@clubId"/></td>
