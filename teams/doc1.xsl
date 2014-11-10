@@ -9,8 +9,13 @@
     
     <xsl:template match="/">
         <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="my.css"/>
+            </head>
             <body>
-                <xsl:apply-templates/>
+                <div class="container">
+                    <xsl:apply-templates/>
+                </div>
             </body>
         </html>
     </xsl:template>
@@ -18,18 +23,21 @@
     <xsl:template match="lea:players | lea:games"/>
     
     <xsl:template match="lea:clubs">
-        <h2> Teams info</h2>
-        <table border="1">
+        
+        <div class="page-header">
+            <h1>Teams Info</h1>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
             <tr bgcolor="#9acd32">
-                <th style="text-align:left">Name</th>
-                <th style="text-align:left">Current score</th>
-                <th style="text-align:left">Number of games</th>
-                <th style="text-align:left">Number of wins</th>
-                <th style="text-align:left">Number of ties</th>
-                <th style="text-align:left">Number of loses</th>
-                <th style="text-align:left">Number of goals scored</th>
-                <th style="text-align:left">Average of goals scored</th>
-                <th style="text-align:left">Average of goals conceeded</th>
+                <th >Name</th>
+                <th >Current score</th>
+                <th >Number of games</th>
+                <th >Number of wins</th>
+                <th >Number of ties</th>
+                <th >Number of loses</th>
+                <th >Number of goals scored</th>
+                <th >Average of goals scored</th>
+                <th >Average of goals conceeded</th>
             </tr>
             <xsl:apply-templates select="lea:club"/>
         </table>
