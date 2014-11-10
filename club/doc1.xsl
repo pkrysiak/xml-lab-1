@@ -10,46 +10,50 @@
     <xsl:param name="clubId" select="'Penafiel'"/>
     
     <xsl:template match="/">
-        <html>
-            <body>
+        <head>
+            <link rel="stylesheet" type="text/css" href="my.css"/>
+        </head>
+        <body>
+            <div class="container">
                 <xsl:apply-templates/>
-            </body>
-        </html>
+            </div>
+        </body>
     </xsl:template>
     
     <xsl:template match="lea:games | lea:players"/>
     
     <xsl:template match="lea:club">
         <xsl:if test="current()/@id = $clubId">
-            <h2>Club Info</h2>
-           
-             <table border="1">
+            <div class="page-header">
+                <h1>Club Info</h1>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
                 <tr>
-                    <td bgcolor="#9acd32"> Acronym:</td>
+                    <td > Acronym:</td>
                     <td> 
                         <xsl:value-of select="lea:acronym"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32"> City:</td>
+                    <td > City:</td>
                     <td> 
                         <xsl:value-of select="lea:city"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32"> Stadium:</td>
+                    <td > Stadium:</td>
                     <td> 
                         <xsl:value-of select="lea:stadium"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32"> Description:</td>
+                    <td > Description:</td>
                     <td> 
                         <xsl:value-of select="lea:description"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32"> Weblink:</td>
+                    <td > Weblink:</td>
                     <td> 
                         <a>
                             <xsl:attribute name="href">
@@ -60,25 +64,29 @@
                     </td>
                 </tr>                                
             </table>
-            <h3> Stats :</h3>
-            <table border="1">
-                <tr bgcolor="#9acd32">
-                    <th style="text-align:left">Name</th>
-                    <th style="text-align:left">Current score</th>
-                    <th style="text-align:left">Number of games</th>
-                    <th style="text-align:left">Number of wins</th>
-                    <th style="text-align:left">Number of ties</th>
-                    <th style="text-align:left">Number of loses</th>
-                    <th style="text-align:left">Number of goals scored</th>
-                    <th style="text-align:left">Average of goals scored</th>
-                    <th style="text-align:left">Average of goals conceeded</th>
+            <div class="page-header">
+                <h3>Stats:</h3>
+            </div>
+            <table class="table table-striped table-bordered table-hover" >
+                <tr >
+                    <th >Name</th>
+                    <th >Current score</th>
+                    <th >Number of games</th>
+                    <th >Number of wins</th>
+                    <th >Number of ties</th>
+                    <th >Number of loses</th>
+                    <th >Number of goals scored</th>
+                    <th >Average of goals scored</th>
+                    <th >Average of goals conceeded</th>
                 </tr>
                  <xsl:call-template name="clubStats">
                      <xsl:with-param name="clID" select="@id"/>
                  </xsl:call-template>
             </table>
             
-            <h3> Players :</h3>
+            <div class="page-header">
+                <h3>Players:</h3>
+            </div>
             <xsl:call-template name="teamPlayers">
                 <xsl:with-param name="clubId" select="@id"/>
             </xsl:call-template>
@@ -89,13 +97,13 @@
     
     <xsl:template name='teamPlayers'>
         <xsl:param name="clubId"/>        
-        <table border="1">
-            <tr bgcolor="#9acd32">
-                <th style="text-align:left">Name</th>
-                <th style="text-align:left">Position</th>
-                <th style="text-align:left">Nick</th>
-                <th style="text-align:left">Nationality</th>
-                <th style="text-align:left">Birthdate</th>
+        <table class="table table-striped table-bordered table-hover">
+            <tr >
+                <th >Name</th>
+                <th >Position</th>
+                <th >Nick</th>
+                <th >Nationality</th>
+                <th >Birthdate</th>
             </tr>
             <xsl:for-each select="//lea:club[@id=$clubId]/lea:teamPlayers/lea:teamPlayer">
                 <xsl:call-template name="teamPlayer">
