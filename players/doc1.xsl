@@ -9,8 +9,13 @@
     
     <xsl:template match="/">
         <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="my.css"/>
+            </head>
             <body>
-                <xsl:apply-templates/>
+                <div class="container">
+                    <xsl:apply-templates/>
+                </div>
             </body>
         </html>
     </xsl:template>
@@ -18,9 +23,11 @@
     <xsl:template match="lea:clubs | lea:games"/>
     
     <xsl:template match="lea:players">
-        <h2>Players Info</h2>
-        <table border="1">
-            <tr bgcolor="#9acd32">
+        <div class="page-header">
+            <h1>Players Info</h1>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Position</th>
                 <th style="text-align:left">Nick</th>
