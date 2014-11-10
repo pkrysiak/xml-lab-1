@@ -11,8 +11,13 @@
     
     <xsl:template match="/">
         <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="my.css"/>
+            </head>
             <body>
-                <xsl:apply-templates/>
+                <div class="container">
+                    <xsl:apply-templates/>
+                </div>
             </body>
         </html>
     </xsl:template>
@@ -20,6 +25,10 @@
     <xsl:template match="lea:players | lea:clubs"/>
     
     <xsl:template match="lea:game">
+        <div class="page-header">
+            <h1>Games info</h1>
+            <small>Week:  <xsl:value-of select="$weekId"/></small>
+        </div>
         <xsl:if test="current()/@week = $weekId">
             <xsl:variable name="teamOne">
                 <xsl:value-of select="@firstTeam"/>
@@ -27,63 +36,71 @@
             <xsl:variable name="teamTwo">
                 <xsl:value-of select="@secondTeam"/>
             </xsl:variable>
-        <h2>Game Info</h2>
-            <table border="1">
+            <div class="page-header">
+                <h2>Game Info</h2>
+            </div>
+            <table class="table table-striped table-bordered table-hover">
                 <tr>
-                    <td bgcolor="#9acd32">Week:</td>
+                    <td >Week:</td>
                     <td> 
                         <xsl:value-of select="@week"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">1st Team:</td>
+                    <td >1st Team:</td>
                     <td> 
                         <xsl:value-of select="$teamOne"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">2nd Team:</td>
+                    <td >2nd Team:</td>
                     <td> 
                         <xsl:value-of select="$teamTwo"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">Location:</td>
+                    <td >Location:</td>
                     <td> 
                         <xsl:value-of select="lea:location"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">Spectators Number:</td>
+                    <td >Spectators Number:</td>
                     <td> 
                         <xsl:value-of select="lea:spectatorsNumber"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">1st Team Goals:</td>
+                    <td >1st Team Goals:</td>
                     <td> 
                         <xsl:value-of select="lea:result/lea:goals[@clubId=$teamOne]"/> 
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#9acd32">2nd Team Goals:</td>
+                    <td >2nd Team Goals:</td>
                     <td> 
                         <xsl:value-of select="lea:result/lea:goals[@clubId=$teamTwo]"/> 
                     </td>
                 </tr>
             </table>
             
-            <h3>Initial Players:</h3>
+            <div class="page-header">
+                <h1>Initial players</h1>
+            </div>
             <xsl:call-template name="initPlayers">
                 <xsl:with-param name="weekId" select="@week"/>
             </xsl:call-template>
             
-            <h3>Substitutions:</h3>
+            <div class="page-header">
+                <h1>Substitutions:</h1>
+            </div>
             <xsl:call-template name="subs">
                 <xsl:with-param name="weekId" select="@week"/>
             </xsl:call-template>
             
-            <h3>Scoring Players:</h3>
+            <div class="page-header">
+                <h1>Scoring players</h1>
+            </div>
             <xsl:call-template name="scorePlayers">
                 <xsl:with-param name="weekId" select="@week"/>
             </xsl:call-template>
@@ -92,8 +109,8 @@
      
     <xsl:template name='initPlayers'>
         <xsl:param name="weekId"/>        
-        <table border="1">
-            <tr bgcolor="#9acd32">
+        <table class="table table-striped table-bordered table-hover">
+            <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Team</th>
             </tr>
@@ -108,8 +125,8 @@
     
     <xsl:template name='subs'>
         <xsl:param name="weekId"/>        
-        <table border="1">
-            <tr bgcolor="#9acd32">
+        <table class="table table-striped table-bordered table-hover">
+            <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Substituted Player</th>
                 <th style="text-align:left">Team</th>
@@ -126,8 +143,8 @@
     
     <xsl:template name='scorePlayers'>
         <xsl:param name="weekId"/>        
-        <table border="1">
-            <tr bgcolor="#9acd32">
+        <table class="table table-striped table-bordered table-hover">
+            <tr >
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Team</th>
             </tr>
