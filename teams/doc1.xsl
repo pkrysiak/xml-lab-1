@@ -28,7 +28,7 @@
             <h1>Teams Info</h1>
         </div>
         <table class="table table-striped table-bordered table-hover">
-            <tr bgcolor="#9acd32">
+            <tr>
                 <th >Name</th>
                 <th >Current score</th>
                 <th >Number of games</th>
