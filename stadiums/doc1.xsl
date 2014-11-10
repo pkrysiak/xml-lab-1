@@ -9,16 +9,24 @@
     
     <xsl:template match="/">
         <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="my.css"/>
+            </head>
             <body>
-                <xsl:apply-templates/>
+                <div class="container">
+                    <xsl:apply-templates/>
+                </div>
             </body>
         </html>
     </xsl:template>
+    <xsl:template match="lea:players | lea:clubs"/>
     
     <xsl:template match="lea:games">
-        <h2>Stadium Info</h2>
-        <table border="1">
-            <tr bgcolor="#9acd32">
+        <div class="page-header">
+            <h1>Stadiums Info:</h1>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
                 <th style="text-align:left">Name</th>
                 <th style="text-align:left">Number of Games</th>
                 <th style="text-align:left">Total Spectators</th>
