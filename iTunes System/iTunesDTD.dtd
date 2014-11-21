@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ENTITY % idAttribute "id ID #REQUIRED">
+<!ELEMENT iTunes (Users, Tracks, Playlists) >
+
+<!ELEMENT Users (User+) >
+<!ELEMENT User (Name, Surname, DateBirth, Age, Sex, Country)>
+<!ATTLIST User %idAttribute;>
+<!ATTLIST User password CDATA #REQUIRED >
+<!ELEMENT Name (#PCDATA) >
+<!ELEMENT Surname (#PCDATA) >
+<!ELEMENT DateBirth (#PCDATA) >
+<!ELEMENT Age (#PCDATA) >
+<!ELEMENT Sex (#PCDATA) >
+<!ELEMENT Country (#PCDATA) >
+
+<!ELEMENT Tracks (Track+) >
+<!ELEMENT Track (Album, Genre, Duration)>
+<!ATTLIST Track %idAttribute;>
+<!ATTLIST Track title CDATA #REQUIRED >
+<!ATTLIST Track artist CDATA #REQUIRED >
+<!ELEMENT Album (#PCDATA) >
+<!ELEMENT Genre (#PCDATA) >
+<!ELEMENT Duration (#PCDATA) >
+
+<!ELEMENT Playlists (Playlist+)>
+<!ELEMENT Playlist (PlTracks) >
+<!ATTLIST Playlist %idAttribute;>
+<!ELEMENT PlTracks (PlTrack+) >
+<!ELEMENT PlTrack (#PCDATA) >
+<!ATTLIST PlTrack %idAttribute; >
+<!ATTLIST PlTrack title CDATA #REQUIRED >
+<!ATTLIST PlTrack year CDATA #REQUIRED >
+

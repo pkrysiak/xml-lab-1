@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE iTunes SYSTEM "iTunesDTD.dtd">
+<iTunes>
+    <Users>
+        <User id ="j.silver" password="asfasf">
+            <Name>Jonas</Name>
+            <Surname>Silver</Surname>
+            <DateBirth>23/8/1990</DateBirth>
+            <Age>24</Age>
+            <Sex>Male</Sex>
+            <Country>Canada</Country>
+        </User>
+        <User id = "m.anne" password="hrs362h">
+            <Name>Mary</Name>
+            <Surname>Anne</Surname>
+            <DateBirth>14/3/1989</DateBirth>
+            <Age>25</Age>
+            <Sex>Female</Sex>
+            <Country>France</Country>
+        </User>
+        <User id = "d.fisher" password="sgsg242">
+            <Name>Derek</Name>
+            <Surname>Fisher</Surname>
+            <DateBirth>16/6/1987</DateBirth>
+            <Age>27</Age>
+            <Sex>Male</Sex>
+            <Country>U.S.A.</Country>
+        </User>
+    </Users>
+    <Tracks>
+        <Track id = "t97124" title = "Get Lucky (feat. Pharrell)" artist = "Daft Punk">
+            <Album>Random Access Memories</Album>
+            <Genre>Funk</Genre>
+            <Duration>4:08</Duration>
+        </Track>
+        <Track id = "t26532" title = "Attak (feat. Danny Brown)" artist = "Rustie">
+            <Album>Green Language</Album>
+            <Genre>Electronic</Genre>
+            <Duration>3:01</Duration>
+        </Track>
+        <Track id = "t15225" title = "Feels Like We Only Go Backwards" artist = "Tame Impala">
+            <Album>Lonerism</Album>
+            <Genre>Rock</Genre>
+            <Duration>3:12</Duration>
+        </Track>
+        <Track id = "t58684" title = "Swimming Pools (Drank)" artist = "Kendrick Lamar">
+            <Album>Good Kid, Mad City</Album>
+            <Genre>Rap</Genre>
+            <Duration>5:13</Duration>
+        </Track>
+        <Track id = "t25132" title = "Blood On The Leaves" artist = "Kanye West">
+            <Album>Yeezus</Album>
+            <Genre>Rap</Genre>
+            <Duration>6:00</Duration>
+        </Track>
+    </Tracks>
+    <Playlists>
+        <Playlist id = "pl32535">
+            <PlTracks>
+                <PlTrack id = "plt97124" title = "Get Lucky (feat. Pharrell)" year = "2013"/>
+                <PlTrack id = "plt26532" title = "Attak (feat. Danny Brown)" year = "2014"/>
+                <PlTrack id = "plt15225" title = "Feels Like We Only Go Backwards" year = "2012"/>
+                <PlTrack id = "plt58684" title = "Swimming Pools (Drank)" year = "2012"/>
+                <PlTrack id = "plt25132" title = "Blood On The Leaves" year = "2013"/>
+            </PlTracks>
+        </Playlist>
+    </Playlists>
+</iTunes>
