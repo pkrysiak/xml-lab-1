@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE iTunes SYSTEM "iTunesDTD.dtd">
-<iTunes>
+<iTunes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="iTunesSchema.xsd">
     <Users>
         <User id ="j.silver" password="asfasf">
             <Name>Jonas</Name>
             <Surname>Silver</Surname>
-            <DateBirth>23/8/1990</DateBirth>
+            <DateBirth>1990-08-23</DateBirth>
             <Age>24</Age>
             <Sex>Male</Sex>
             <Country>Canada</Country>
@@ -13,7 +14,7 @@
         <User id = "m.anne" password="hrs362h">
             <Name>Mary</Name>
             <Surname>Anne</Surname>
-            <DateBirth>14/3/1989</DateBirth>
+            <DateBirth>1989-03-14</DateBirth>
             <Age>25</Age>
             <Sex>Female</Sex>
             <Country>France</Country>
@@ -21,7 +22,7 @@
         <User id = "d.fisher" password="sgsg242">
             <Name>Derek</Name>
             <Surname>Fisher</Surname>
-            <DateBirth>16/6/1987</DateBirth>
+            <DateBirth>1987-06-16</DateBirth>
             <Age>27</Age>
             <Sex>Male</Sex>
             <Country>U.S.A.</Country>
@@ -57,11 +58,11 @@
     <Playlists>
         <Playlist id = "pl32535">
             <PlTracks>
-                <PlTrack id = "plt97124" title = "Get Lucky (feat. Pharrell)" year = "2013"/>
-                <PlTrack id = "plt26532" title = "Attak (feat. Danny Brown)" year = "2014"/>
-                <PlTrack id = "plt15225" title = "Feels Like We Only Go Backwards" year = "2012"/>
-                <PlTrack id = "plt58684" title = "Swimming Pools (Drank)" year = "2012"/>
-                <PlTrack id = "plt25132" title = "Blood On The Leaves" year = "2013"/>
+                <PlTrack pltid = "t97124" title = "Get Lucky (feat. Pharrell)" year = "2013"/>
+                <PlTrack pltid = "t26532" title = "Attak (feat. Danny Brown)" year = "2014"/>
+                <PlTrack pltid = "t15225" title = "Feels Like We Only Go Backwards" year = "2012"/>
+                <PlTrack pltid = "t58684" title = "Swimming Pools (Drank)" year = "2012"/>
+                <PlTrack pltid = "t25132" title = "Blood On The Leaves" year = "2013"/>
             </PlTracks>
         </Playlist>
     </Playlists>

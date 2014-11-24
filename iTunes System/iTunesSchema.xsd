@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+    <xs:element name="iTunes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = "Users">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name = "User" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Name" type="xs:string"/>
+                                        <xs:element name="Surname" type="xs:string"/>
+                                        <xs:element name="DateBirth" type="xs:date"/>
+                                        <xs:element name="Age" type="xs:integer"/>
+                                        <xs:element name="Sex" type="xs:string"/>
+                                        <xs:element name="Country" type="xs:string"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:NCName" use="required"/>
+                                    <xs:attribute name="password" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:key name="userID"> 
+                        <xs:selector xpath="User"/> 
+                        <xs:field xpath="@id"/> 
+                    </xs:key>
+                </xs:element>
+                <xs:element name = "Tracks">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name = "Track" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Album" type="xs:string"/>
+                                        <xs:element name="Genre" type="xs:string"/>
+                                        <xs:element name="Duration" type="xs:string"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                    <xs:attribute name="title" type="xs:string" use="required"/>
+                                    <xs:attribute name="artist" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:key name="trackID">
+                        <xs:selector xpath="Track"></xs:selector>
+                        <xs:field xpath="@id"></xs:field>
+                    </xs:key>
+                </xs:element>
+                <xs:element name = "Playlists">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name = "Playlist" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name= "PlTracks">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="PlTrack" minOccurs="1" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="pltid" type="xs:string"/>
+                                                            <xs:attribute name="title" type="xs:string"/>
+                                                            <xs:attribute name="year" type="xs:integer"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string"/>
+                                </xs:complexType>
+                                <xs:key name="playlistID">
+                                    <xs:selector xpath="Playlist"/>
+                                    <xs:field xpath="@id"/>
+                                </xs:key>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+        
+        <xs:keyref refer="trackID" name="pltid">
+            <xs:selector xpath="./Playlists/Playlist/PlTracks/PlTrack"/>
+            <xs:field xpath="@pltid"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>

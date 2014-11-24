@@ -28,7 +28,7 @@
 <!ATTLIST Playlist %idAttribute;>
 <!ELEMENT PlTracks (PlTrack+) >
 <!ELEMENT PlTrack (#PCDATA) >
-<!ATTLIST PlTrack %idAttribute; >
+<!ATTLIST PlTrack pltid IDREF #REQUIRED >
 <!ATTLIST PlTrack title CDATA #REQUIRED >
 <!ATTLIST PlTrack year CDATA #REQUIRED >
 
